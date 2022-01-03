@@ -1,5 +1,8 @@
 package com.project.ProjetoCursoSP.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +21,11 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonFormat
     private Instant moment;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
